@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scarlet SMP · Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero { text-align: center; padding: 3.5rem 0 1.5rem; }
+    .hero h1 { font-size: 4.2rem; }
+    .hero .subtitle { font-size: 1.5rem; margin: 1.2rem 0; color: #bcc3cf; }
+    .hero p { max-width: 600px; margin: 0 auto 2.5rem; color: #b0b8c7; }
+    
+    .season-banner {
+      background: linear-gradient(135deg, #1a1c26, #2a1e22);
+      border: 1px solid #cf2e3f;
+      border-radius: 60px;
+      padding: 1rem 2rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #cf2e3f;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 20px rgba(160, 28, 44, 0.2);
+    }
+    .season-banner i { margin-right: 8px; }
+
+    .leaderboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+      background: #14171f;
+      padding: 1.8rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #2f2630;
+    }
+    .lb-item { text-align: center; }
+    .lb-item i { font-size: 2rem; color: #cf2e3f; margin-bottom: 0.2rem; }
+    .lb-item .rank { font-size: 1.2rem; font-weight: 700; color: #ffd700; }
+    .lb-item .player { font-size: 1.1rem; color: #e9edf0; }
+    .lb-item .stat { font-size: 0.9rem; color: #919db0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar">
+      <a href="index.html" class="logo"><i class="fas fa-dragon"></i><span>Scarlet SMP</span></a>
+      <div class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="lifesteal.html"><i class="fas fa-heart-broken"></i> Lifesteal</a>
+        <a href="pvp.html"><i class="fas fa-sword"></i> PvP</a>
+        <a href="store/index.html"><i class="fas fa-shopping-cart"></i> Store</a>
+        <a href="server.html">Server</a>
+      </div>
+      <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn"><i class="fas fa-play"></i> Join</a>
+    </nav>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="season-banner"><i class="fas fa-fire"></i> Season 1 is LIVE! New Map. New Leaderboards.</div>
+      <h1>LIFESTEAL · PVP</h1>
+      <h1>SCARLET SMP</h1>
+      <div class="subtitle">kill. steal. survive.</div>
+      <p>You kill someone, you take their heart. Simple as that. No handouts, no safe zones — just pure chaos and adrenaline. Jump in, fight for your life, and see if you've got what it takes to be the last one standing.</p>
+      <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn" style="font-size: 1.1rem; padding: 0.8rem 2.5rem;"><i class="fas fa-sword"></i> Play Now</a>
+        <a href="lifesteal.html" class="btn btn-outline" style="font-size: 1.1rem; padding: 0.8rem 2.5rem;"><i class="fas fa-book-dead"></i> How it works</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaderboard Section -->
+  <div class="container">
+    <h2 class="section-title"><span>🏆 Top Hearts (Season 1)</span></h2>
+    <div class="leaderboard-grid">
+      <div class="lb-item">
+        <i class="fas fa-crown" style="color: #ffd700;"></i>
+        <div class="rank">#1</div>
+        <div class="player">CelestialKing</div>
+        <div class="stat">24 Hearts</div>
+      </div>
+      <div class="lb-item">
+        <i class="fas fa-star" style="color: #c0c0c0;"></i>
+        <div class="rank">#2</div>
+        <div class="player">AscendantWarrior</div>
+        <div class="stat">19 Hearts</div>
+      </div>
+      <div class="lb-item">
+        <i class="fas fa-medal" style="color: #cd7f32;"></i>
+        <div class="rank">#3</div>
+        <div class="player">Vanguard_Pro</div>
+        <div class="stat">14 Hearts</div>
+      </div>
+      <div class="lb-item">
+        <i class="fas fa-bolt" style="color: #cf2e3f;"></i>
+        <div class="rank">#4</div>
+        <div class="player">Olympian_99</div>
+        <div class="stat">11 Hearts</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="socials">
+          <a href="https://discord.gg/9A75VWaHrr" target="_blank"><i class="fab fa-discord"></i></a>
+        </div>
+        <div class="copy">&copy; 2026 <span>Scarlet SMP</span> · not affiliated with Mojang</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
