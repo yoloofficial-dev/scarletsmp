@@ -91,8 +91,8 @@
         <a href="lifesteal.html"><i class="fas fa-heart-broken"></i> Lifesteal</a>
         <a href="pvp.html"><i class="fas fa-sword"></i> PvP</a>
         <a href="store/index.html"><i class="fas fa-shopping-cart"></i> Store</a>
-        <a href="server.html" style="color:#f03a4e; border-bottom-color:#cf2e3f;"><i class="fas fa-server"></i> Server</a>
         <a href="leaderboards.html"><i class="fas fa-trophy"></i> Leaderboards</a>
+        <a href="server.html" style="color:#f03a4e; border-bottom-color:#cf2e3f;"><i class="fas fa-server"></i> Server</a>
       </div>
       <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn"><i class="fas fa-play"></i> Join</a>
     </nav>
@@ -259,8 +259,9 @@
           }
         } catch (error) { updateStatus(false); }
       }
+
       pingServer();
-      setInterval(pingServer, 30000);
+      setInterval(pingServer, 15000);
     })();
   </script>
 </body>
