@@ -94,7 +94,7 @@
         <a href="leaderboards.html"><i class="fas fa-trophy"></i> Leaderboards</a>
         <a href="server.html" style="color:#f03a4e; border-bottom-color:#cf2e3f;"><i class="fas fa-server"></i> Server</a>
       </div>
-      <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn"><i class="fas fa-play"></i> Join</a>
+      <a href="minecraft://scarletsmp.mc-join.xyz" class="btn"><i class="fas fa-play"></i> Join</a>
     </nav>
   </div>
 
@@ -104,7 +104,7 @@
     <div class="server-card">
       <div style="color: #9ba3b3; margin-bottom: 0.5rem;">Click the IP below to copy it to your clipboard.</div>
       <div class="ip-container">
-        <div class="big-ip" id="serverIP">scarletsmp.playwithbao.com</div>
+        <div class="big-ip" id="serverIP">scarletsmp.mc-join.xyz</div>
         <div class="copy-badge" id="copyBadge">✓ Copied!</div>
       </div>
       <div class="port-badge">Java Edition</div>
@@ -146,7 +146,7 @@
       
       <div class="faq-item" onclick="toggleFAQ(this)">
         <div class="faq-question">How do I join the server? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">Just hit "Play Now" or throw the IP `scarletsmp.playwithbao.com` into your Java Edition server list. That's literally it.</div>
+        <div class="faq-answer">Just hit "Play Now" or throw the IP `scarletsmp.mc-join.xyz` into your Java Edition server list. That's literally it.</div>
       </div>
       <div class="faq-item" onclick="toggleFAQ(this)">
         <div class="faq-question">What version does the server run? <i class="fas fa-chevron-down"></i></div>
@@ -190,12 +190,12 @@
       </div>
       <div class="faq-item" onclick="toggleFAQ(this)">
         <div class="faq-question">What is the server IP? <i class="fas fa-chevron-down"></i></div>
-        <div class="faq-answer">`scarletsmp.playwithbao.com`, no port, no extra steps. Just paste it in and connect.</div>
+        <div class="faq-answer">'scarletsmp.mc-join.xyz`, no port, no extra steps. Just paste it in and connect.</div>
       </div>
     </div>
 
     <div class="connect-btn-container">
-      <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn" style="font-size: 1.3rem; padding: 0.8rem 3rem;"><i class="fas fa-plug"></i> Connect Now</a>
+      <a href="minecraft://scarletsmp.mc-join.xyz" class="btn" style="font-size: 1.3rem; padding: 0.8rem 3rem;"><i class="fas fa-plug"></i> Connect Now</a>
       <div class="connect-note">If Minecraft doesn't open automatically, copy the IP above and paste it in.</div>
     </div>
   </div>
@@ -219,7 +219,7 @@
     const ipElement = document.getElementById('serverIP');
     const copyBadge = document.getElementById('copyBadge');
     ipElement.addEventListener('click', function() {
-      const text = 'scarletsmp.playwithbao.com';
+      const text = 'scarletsmp.mc-join.xyz';
       navigator.clipboard.writeText(text).then(() => {
         copyBadge.classList.add('show');
         setTimeout(() => { copyBadge.classList.remove('show'); }, 2000);
@@ -227,7 +227,7 @@
     });
 
     (function() {
-      const HOST = 'scarletsmp.playwithbao.com';
+      const HOST = 'scarletsmp.mc-join.xyz';
       const PORT = 48316;
       const statusDot = document.getElementById('statusDot');
       const statusText = document.getElementById('statusText');
