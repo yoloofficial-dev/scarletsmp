@@ -2,7 +2,7 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-  background-image: url('mc-bg.png');
+  background-image: url('mc-bg.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
