@@ -115,39 +115,35 @@
   <div class="container">
     <div class="lb-hero">
       <h2 class="section-title"><span>🏆 Leaderboards</span></h2>
-      <p>Season 1 stats. Updated every 5 minutes.</p>
+      <p>Season 1 stats. Auto-updates every 30 seconds.</p>
     </div>
 
     <div class="lb-tabs">
       <div class="lb-tab active" onclick="switchTab('hearts')"><i class="fas fa-heart"></i> Most Hearts</div>
-      <div class="lb-tab" onclick="switchTab('eliminated')"><i class="fas fa-skull"></i> Eliminated</div>
       <div class="lb-tab" onclick="switchTab('kills')"><i class="fas fa-sword"></i> Most Kills</div>
-      <div class="lb-tab" onclick="switchTab('mobs')"><i class="fas fa-dragon"></i> Mob Kills</div>
       <div class="lb-tab" onclick="switchTab('deaths')"><i class="fas fa-ghost"></i> Most Deaths</div>
+      <div class="lb-tab" onclick="switchTab('mobs')"><i class="fas fa-dragon"></i> Mob Kills</div>
       <div class="lb-tab" onclick="switchTab('money')"><i class="fas fa-coins"></i> Most Money</div>
       <div class="lb-tab" onclick="switchTab('playtime')"><i class="fas fa-clock"></i> Most Playtime</div>
     </div>
 
     <div id="panel-hearts" class="lb-panel active">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
-    </div>
-    <div id="panel-eliminated" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
     </div>
     <div id="panel-kills" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
-    </div>
-    <div id="panel-mobs" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
     </div>
     <div id="panel-deaths" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+    </div>
+    <div id="panel-mobs" class="lb-panel">
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
     </div>
     <div id="panel-money" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
     </div>
     <div id="panel-playtime" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Loading...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
     </div>
 
     <div class="last-updated" id="lastUpdated"></div>
@@ -165,17 +161,16 @@
   </footer>
 
   <script>
-    // REPLACE THIS URL with your Cloudflare Worker URL once deployed
-    const API_URL = 'https://YOUR_WORKER.YOUR_SUBDOMAIN.workers.dev';
+    // 🔥 REPLACE THIS WITH YOUR ACTUAL SERVER IP
+    const API_URL = 'http://YOUR_SERVER_IP:7070';
 
     const tabConfig = {
-      hearts:     { label: 'Hearts',    icon: 'fa-heart',   unit: 'Hearts',   key: 'hearts' },
-      eliminated: { label: 'Eliminated',icon: 'fa-skull',   unit: 'Times',    key: 'eliminated' },
-      kills:      { label: 'Kills',     icon: 'fa-sword',   unit: 'Kills',    key: 'kills' },
-      mobs:       { label: 'Mob Kills', icon: 'fa-dragon',  unit: 'Mobs',     key: 'mob_kills' },
-      deaths:     { label: 'Deaths',    icon: 'fa-ghost',   unit: 'Deaths',   key: 'deaths' },
-      money:      { label: 'Balance',   icon: 'fa-coins',   unit: '$',        key: 'money' },
-      playtime:   { label: 'Playtime',  icon: 'fa-clock',   unit: '',         key: 'playtime' },
+      hearts:   { label: 'Hearts',  unit: '❤️', key: 'hearts' },
+      kills:    { label: 'Kills',   unit: '⚔️', key: 'kills' },
+      deaths:   { label: 'Deaths',  unit: '💀', key: 'deaths' },
+      mobs:     { label: 'Mobs',    unit: '🐉', key: 'mobs' },
+      money:    { label: 'Balance', unit: '$',  key: 'money' },
+      playtime: { label: 'Playtime',unit: '⏱️', key: 'playtime' },
     };
 
     const cache = {};
@@ -229,7 +224,7 @@
         document.getElementById('panel-' + tab).innerHTML = buildTable(data, tabConfig[tab]);
         document.getElementById('lastUpdated').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
       } catch (e) {
-        document.getElementById('panel-' + tab).innerHTML = '<div class="loading">Could not load data. API not connected yet.</div>';
+        document.getElementById('panel-' + tab).innerHTML = '<div class="loading">Could not connect to server. Check port 7070.</div>';
       }
     }
 
@@ -238,8 +233,11 @@
     function switchTab(tab) {
       document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.lb-panel').forEach(p => p.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      
+      // Find the clicked tab and activate it
+      document.querySelector(`.lb-tab[onclick="switchTab('${tab}')"]`).classList.add('active');
       document.getElementById('panel-' + tab).classList.add('active');
+      
       activeTab = tab;
       loadTab(tab);
     }
@@ -247,11 +245,11 @@
     // Load first tab on page load
     loadTab('hearts');
 
-    // Auto refresh every 5 minutes
+    // Auto refresh every 30 seconds
     setInterval(() => {
       Object.keys(cache).forEach(k => delete cache[k]);
       loadTab(activeTab);
-    }, 5 * 60 * 1000);
+    }, 30000);
   </script>
 </body>
 </html>
