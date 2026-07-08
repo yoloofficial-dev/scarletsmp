@@ -161,16 +161,16 @@
   </footer>
 
   <script>
-    // YOUR LIVE SERVER IP WITH API PORT 7070
+    // ✅ CORRECT PORT: 7070 (The API port, NOT the Minecraft port)
     const API_URL = 'http://sctestprivatesmp.playwithbao.com:7070';
 
     const tabConfig = {
-      hearts:   { label: 'Hearts',  unit: '❤️', key: 'hearts' },
-      kills:    { label: 'Kills',   unit: '⚔️', key: 'kills' },
-      deaths:   { label: 'Deaths',  unit: '💀', key: 'deaths' },
-      mobs:     { label: 'Mobs',    unit: '🐉', key: 'mobs' },
-      money:    { label: 'Balance', unit: '$',  key: 'money' },
-      playtime: { label: 'Playtime',unit: '⏱️', key: 'playtime' },
+      hearts:   { label: 'Hearts',  icon: '<i class="fas fa-heart"></i>', key: 'hearts' },
+      kills:    { label: 'Kills',   icon: '<i class="fas fa-sword"></i>', key: 'kills' },
+      deaths:   { label: 'Deaths',  icon: '<i class="fas fa-ghost"></i>', key: 'deaths' },
+      mobs:     { label: 'Mobs',    icon: '<i class="fas fa-dragon"></i>', key: 'mobs' },
+      money:    { label: 'Balance', icon: '<i class="fas fa-coins"></i>', key: 'money' },
+      playtime: { label: 'Playtime',icon: '<i class="fas fa-clock"></i>', key: 'playtime' },
     };
 
     const cache = {};
@@ -206,7 +206,7 @@
 
       return `
         <table class="lb-table">
-          <thead><tr><th>#</th><th>Player</th><th>${config.label}</th></tr></thead>
+          <thead><tr><th>#</th><th>Player</th><th>${config.icon} ${config.label}</th></tr></thead>
           <tbody>${rows}</tbody>
         </table>
       `;
