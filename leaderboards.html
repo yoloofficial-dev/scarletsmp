@@ -128,22 +128,22 @@
     </div>
 
     <div id="panel-hearts" class="lb-panel active">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
     <div id="panel-kills" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
     <div id="panel-deaths" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
     <div id="panel-mobs" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
     <div id="panel-money" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
     <div id="panel-playtime" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Connecting to server...</div>
+      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
     </div>
 
     <div class="last-updated" id="lastUpdated"></div>
@@ -161,8 +161,8 @@
   </footer>
 
   <script>
-    // 🔥 REPLACE THIS WITH YOUR ACTUAL SERVER IP
-    const API_URL = 'http://YOUR_SERVER_IP:7070';
+    // YOUR LIVE SERVER IP WITH API PORT 7070
+    const API_URL = 'http://sctestprivatesmp.playwithbao.com:7070';
 
     const tabConfig = {
       hearts:   { label: 'Hearts',  unit: '❤️', key: 'hearts' },
@@ -212,19 +212,43 @@
       `;
     }
 
+    // TEST PING FIRST
+    async function pingAPI() {
+      try {
+        const res = await fetch(`${API_URL}/leaderboard?type=hearts`, { method: 'HEAD' });
+        return res.ok;
+      } catch (e) {
+        return false;
+      }
+    }
+
     async function loadTab(tab) {
+      const panel = document.getElementById('panel-' + tab);
+      
       if (cache[tab]) {
-        document.getElementById('panel-' + tab).innerHTML = buildTable(cache[tab], tabConfig[tab]);
+        panel.innerHTML = buildTable(cache[tab], tabConfig[tab]);
         return;
       }
+
+      // Show ping status
+      panel.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>';
+
+      // Step 1: Ping first
+      const isReachable = await pingAPI();
+      if (!isReachable) {
+        panel.innerHTML = '<div class="loading">❌ Server unreachable. Is port 7070 open?</div>';
+        return;
+      }
+
+      // Step 2: Fetch data
       try {
         const res = await fetch(`${API_URL}/leaderboard?type=${tab}`);
         const data = await res.json();
         cache[tab] = data;
-        document.getElementById('panel-' + tab).innerHTML = buildTable(data, tabConfig[tab]);
+        panel.innerHTML = buildTable(data, tabConfig[tab]);
         document.getElementById('lastUpdated').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
       } catch (e) {
-        document.getElementById('panel-' + tab).innerHTML = '<div class="loading">Could not connect to server. Check port 7070.</div>';
+        panel.innerHTML = '<div class="loading">❌ API error. Could not load data.</div>';
       }
     }
 
@@ -234,7 +258,6 @@
       document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.lb-panel').forEach(p => p.classList.remove('active'));
       
-      // Find the clicked tab and activate it
       document.querySelector(`.lb-tab[onclick="switchTab('${tab}')"]`).classList.add('active');
       document.getElementById('panel-' + tab).classList.add('active');
       
@@ -242,10 +265,8 @@
       loadTab(tab);
     }
 
-    // Load first tab on page load
     loadTab('hearts');
 
-    // Auto refresh every 30 seconds
     setInterval(() => {
       Object.keys(cache).forEach(k => delete cache[k]);
       loadTab(activeTab);
