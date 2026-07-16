@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scarlet SMP · Leaderboards</title>
+  <title>Universe FFA · Leaderboards</title>
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
@@ -13,264 +13,114 @@
     .lb-hero p { color: #b0b8c7; margin-top: 0.5rem; }
 
     .lb-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      justify-content: center;
-      margin: 2rem 0 1.5rem;
+      display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; margin: 2rem 0 1.5rem;
     }
     .lb-tab {
-      background: #14171f;
-      border: 1px solid #2a2025;
-      border-radius: 40px;
-      padding: 0.5rem 1.4rem;
-      color: #9ba3b3;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.3s ease;
-      font-size: 0.95rem;
+      background: rgba(20, 20, 30, 0.7); border: 1px solid #2a1e30;
+      border-radius: 40px; padding: 0.5rem 1.4rem; color: #9ba3b3; font-weight: 600;
+      cursor: pointer; transition: 0.3s ease; font-size: 0.95rem;
     }
-    .lb-tab:hover { border-color: #cf2e3f; color: #f03a4e; }
-    .lb-tab.active { background: #a01c2c; border-color: #cf2e3f; color: white; }
+    .lb-tab:hover { border-color: #c084fc; color: #c084fc; }
+    .lb-tab.active { background: #7c3aed; border-color: #c084fc; color: white; }
     .lb-tab i { margin-right: 6px; }
 
     .lb-panel { display: none; }
     .lb-panel.active { display: block; }
 
     .lb-table {
-      width: 100%;
-      border-collapse: collapse;
-      background: #14171f;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 1px solid #2a2025;
+      width: 100%; border-collapse: collapse; background: rgba(20, 20, 30, 0.7); backdrop-filter: blur(10px);
+      border-radius: 20px; overflow: hidden; border: 1px solid #2a1e30;
     }
-    .lb-table thead tr {
-      background: #1a1c26;
-      color: #9ba3b3;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .lb-table th, .lb-table td {
-      padding: 0.9rem 1.2rem;
-      text-align: left;
-    }
-    .lb-table tbody tr {
-      border-top: 1px solid #1e2130;
-      transition: background 0.2s ease;
-    }
-    .lb-table tbody tr:hover { background: #1a1c26; }
+    .lb-table thead tr { background: rgba(10, 0, 20, 0.9); color: #9ba3b3; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .lb-table th, .lb-table td { padding: 0.9rem 1.2rem; text-align: left; }
+    .lb-table tbody tr { border-top: 1px solid #2a1e30; transition: background 0.2s ease; }
+    .lb-table tbody tr:hover { background: rgba(10, 0, 20, 0.9); }
 
     .rank-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-weight: 800;
-      font-size: 0.9rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 50%; font-weight: 800; font-size: 0.9rem;
     }
-    .rank-1 { background: #ffd700; color: #0b0d15; }
-    .rank-2 { background: #c0c0c0; color: #0b0d15; }
+    .rank-1 { background: #c084fc; color: #0b0d15; }
+    .rank-2 { background: #a0a0a0; color: #0b0d15; }
     .rank-3 { background: #cd7f32; color: #0b0d15; }
-    .rank-other { background: #1e2130; color: #9ba3b3; }
+    .rank-other { background: #2a1e30; color: #9ba3b3; }
 
-    .player-name { font-weight: 700; color: #e9edf0; }
-    .stat-value { color: #cf2e3f; font-weight: 700; }
+    .player-name { font-weight: 700; color: #f0f0f0; }
+    .stat-value { color: #c084fc; font-weight: 700; }
 
-    .loading {
-      text-align: center;
-      padding: 3rem;
-      color: #9ba3b3;
-    }
-    .loading i { font-size: 2rem; color: #cf2e3f; animation: spin 1s linear infinite; display: block; margin-bottom: 0.5rem; }
+    .loading { text-align: center; padding: 3rem; color: #9ba3b3; }
+    .loading i { font-size: 2rem; color: #7c3aed; animation: spin 1s linear infinite; display: block; margin-bottom: 0.5rem; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .last-updated {
-      text-align: right;
-      color: #555;
-      font-size: 0.8rem;
-      margin-top: 0.5rem;
-    }
+    .last-updated { text-align: right; color: #555; font-size: 0.8rem; margin-top: 0.5rem; }
   </style>
 </head>
 <body>
   <div class="container">
     <nav class="navbar">
-      <a href="index.html" class="logo"><i class="fas fa-dragon"></i><span>Scarlet SMP</span></a>
+      <a href="index.html" class="logo"><i class="fas fa-globe"></i><span>Universe FFA</span></a>
       <div class="nav-links">
         <a href="index.html"><i class="fas fa-home"></i> Home</a>
-        <a href="lifesteal.html"><i class="fas fa-heart-broken"></i> Lifesteal</a>
+        <a href="ffa.html"><i class="fas fa-crosshairs"></i> FFA</a>
         <a href="pvp.html"><i class="fas fa-sword"></i> PvP</a>
         <a href="store/index.html"><i class="fas fa-shopping-cart"></i> Store</a>
-        <a href="leaderboards.html" style="color:#f03a4e; border-bottom-color:#cf2e3f;"><i class="fas fa-trophy"></i> Leaderboards</a>
+        <a href="leaderboards.html" style="color:#c084fc; border-bottom-color:#c084fc;"><i class="fas fa-trophy"></i> Leaderboards</a>
         <a href="server.html"><i class="fas fa-server"></i> Server</a>
       </div>
       <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn"><i class="fas fa-play"></i> Join</a>
     </nav>
   </div>
-
   <div class="container">
-    <div class="lb-hero">
-      <h2 class="section-title"><span>🏆 Leaderboards</span></h2>
-      <p>Season 1 stats. Auto-updates every 30 seconds.</p>
-    </div>
-
+    <div class="lb-hero"><h2 class="section-title"><span>🏆 Leaderboards</span></h2><p>Season 1 stats. Auto-updates every 30 seconds.</p></div>
     <div class="lb-tabs">
-      <div class="lb-tab active" onclick="switchTab('hearts')"><i class="fas fa-heart"></i> Most Hearts</div>
-      <div class="lb-tab" onclick="switchTab('kills')"><i class="fas fa-sword"></i> Most Kills</div>
+      <div class="lb-tab active" onclick="switchTab('kills')"><i class="fas fa-sword"></i> Most Kills</div>
       <div class="lb-tab" onclick="switchTab('deaths')"><i class="fas fa-ghost"></i> Most Deaths</div>
-      <div class="lb-tab" onclick="switchTab('mobs')"><i class="fas fa-dragon"></i> Mob Kills</div>
-      <div class="lb-tab" onclick="switchTab('money')"><i class="fas fa-coins"></i> Most Money</div>
-      <div class="lb-tab" onclick="switchTab('playtime')"><i class="fas fa-clock"></i> Most Playtime</div>
     </div>
-
-    <div id="panel-hearts" class="lb-panel active">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-    <div id="panel-kills" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-    <div id="panel-deaths" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-    <div id="panel-mobs" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-    <div id="panel-money" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-    <div id="panel-playtime" class="lb-panel">
-      <div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>
-    </div>
-
+    <div id="panel-kills" class="lb-panel active"><div class="loading"><i class="fas fa-spinner"></i> Loading...</div></div>
+    <div id="panel-deaths" class="lb-panel"><div class="loading"><i class="fas fa-spinner"></i> Loading...</div></div>
     <div class="last-updated" id="lastUpdated"></div>
   </div>
-
   <footer>
     <div class="container">
       <div class="footer-content">
-        <div class="socials">
-          <a href="https://discord.gg/9A75VWaHrr" target="_blank"><i class="fab fa-discord"></i></a>
-        </div>
-        <div class="copy">&copy; 2026 <span>Scarlet SMP</span> · not affiliated with Mojang</div>
+        <div class="socials"><a href="https://discord.gg/pzXv2XDpx" target="_blank"><i class="fab fa-discord"></i></a></div>
+        <div class="copy">&copy; 2026 <span>Universe FFA</span> · not affiliated with Mojang</div>
       </div>
     </div>
   </footer>
 
   <script>
-    // ✅ UPDATED DOMAIN + CORRECT API PORT (7070)
     const API_URL = 'http://scarletsmp.mc-join.xyz:7070';
-
-    const tabConfig = {
-      hearts:   { label: 'Hearts',  icon: '<i class="fas fa-heart"></i>', key: 'hearts' },
-      kills:    { label: 'Kills',   icon: '<i class="fas fa-sword"></i>', key: 'kills' },
-      deaths:   { label: 'Deaths',  icon: '<i class="fas fa-ghost"></i>', key: 'deaths' },
-      mobs:     { label: 'Mobs',    icon: '<i class="fas fa-dragon"></i>', key: 'mobs' },
-      money:    { label: 'Balance', icon: '<i class="fas fa-coins"></i>', key: 'money' },
-      playtime: { label: 'Playtime',icon: '<i class="fas fa-clock"></i>', key: 'playtime' },
-    };
-
+    const tabConfig = { kills: { label: 'Kills', icon: '<i class="fas fa-sword"></i>', key: 'kills' }, deaths: { label: 'Deaths', icon: '<i class="fas fa-ghost"></i>', key: 'deaths' } };
     const cache = {};
-
-    function getRankClass(i) {
-      if (i === 0) return 'rank-1';
-      if (i === 1) return 'rank-2';
-      if (i === 2) return 'rank-3';
-      return 'rank-other';
-    }
-
-    function formatValue(key, val) {
-      if (key === 'playtime') {
-        const h = Math.floor(val / 3600);
-        const m = Math.floor((val % 3600) / 60);
-        return `${h}h ${m}m`;
-      }
-      if (key === 'money') return '$' + Number(val).toLocaleString();
-      return Number(val).toLocaleString();
-    }
-
+    function getRankClass(i) { if (i === 0) return 'rank-1'; if (i === 1) return 'rank-2'; if (i === 2) return 'rank-3'; return 'rank-other'; }
+    function formatValue(key, val) { return Number(val).toLocaleString(); }
     function buildTable(data, config) {
-      if (!data || data.length === 0) {
-        return '<div class="loading">No data yet. Be the first!</div>';
-      }
-      let rows = data.map((p, i) => `
-        <tr>
-          <td><span class="rank-badge ${getRankClass(i)}">${i + 1}</span></td>
-          <td class="player-name">${p.name}</td>
-          <td class="stat-value">${formatValue(config.key, p.value)}</td>
-        </tr>
-      `).join('');
-
-      return `
-        <table class="lb-table">
-          <thead><tr><th>#</th><th>Player</th><th>${config.icon} ${config.label}</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-      `;
+      if (!data || data.length === 0) return '<div class="loading">No data yet. Be the first!</div>';
+      let rows = data.map((p, i) => `<tr><td><span class="rank-badge ${getRankClass(i)}">${i + 1}</span></td><td class="player-name">${p.name}</td><td class="stat-value">${formatValue(config.key, p.value)}</td></tr>`).join('');
+      return `<table class="lb-table"><thead><tr><th>#</th><th>Player</th><th>${config.icon} ${config.label}</th></tr></thead><tbody>${rows}</tbody></table>`;
     }
-
-    // TEST PING FIRST
-    async function pingAPI() {
-      try {
-        const res = await fetch(`${API_URL}/leaderboard?type=hearts`, { method: 'HEAD' });
-        return res.ok;
-      } catch (e) {
-        return false;
-      }
-    }
-
     async function loadTab(tab) {
       const panel = document.getElementById('panel-' + tab);
-      
-      if (cache[tab]) {
-        panel.innerHTML = buildTable(cache[tab], tabConfig[tab]);
-        return;
-      }
-
-      // Show ping status
-      panel.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> Pinging server...</div>';
-
-      // Step 1: Ping first
-      const isReachable = await pingAPI();
-      if (!isReachable) {
-        panel.innerHTML = '<div class="loading">❌ Server unreachable. Is port 7070 open?</div>';
-        return;
-      }
-
-      // Step 2: Fetch data
+      if (cache[tab]) { panel.innerHTML = buildTable(cache[tab], tabConfig[tab]); return; }
+      panel.innerHTML = '<div class="loading"><i class="fas fa-spinner"></i> Loading...</div>';
       try {
         const res = await fetch(`${API_URL}/leaderboard?type=${tab}`);
         const data = await res.json();
         cache[tab] = data;
         panel.innerHTML = buildTable(data, tabConfig[tab]);
         document.getElementById('lastUpdated').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
-      } catch (e) {
-        panel.innerHTML = '<div class="loading">❌ API error. Could not load data.</div>';
-      }
+      } catch (e) { panel.innerHTML = '<div class="loading">Could not load data.</div>'; }
     }
-
-    let activeTab = 'hearts';
-
+    let activeTab = 'kills';
     function switchTab(tab) {
       document.querySelectorAll('.lb-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.lb-panel').forEach(p => p.classList.remove('active'));
-      
       document.querySelector(`.lb-tab[onclick="switchTab('${tab}')"]`).classList.add('active');
       document.getElementById('panel-' + tab).classList.add('active');
-      
-      activeTab = tab;
-      loadTab(tab);
+      activeTab = tab; loadTab(tab);
     }
-
-    loadTab('hearts');
-
-    setInterval(() => {
-      Object.keys(cache).forEach(k => delete cache[k]);
-      loadTab(activeTab);
-    }, 30000);
+    loadTab('kills');
+    setInterval(() => { Object.keys(cache).forEach(k => delete cache[k]); loadTab(activeTab); }, 30000);
   </script>
 </body>
 </html>
