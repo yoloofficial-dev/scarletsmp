@@ -8,13 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
-    /* Override the background for this page to a rich purple gradient */
-    body {
-      background: linear-gradient(145deg, #0b0712 0%, #1a1225 50%, #0b0712 100%) !important;
-      background-attachment: fixed !important;
-    }
-    body::before, body::after { display: none; } /* Disable the glowing effects on this page */
-
     .server-card { background: rgba(20, 20, 30, 0.7); border-radius: 30px; padding: 3rem 2rem; margin: 2rem 0; border: 1px solid #2a1e30; text-align: center; transition: all 0.3s ease; }
     .server-card:hover { border-color: #c084fc; transform: scale(1.01); }
     .ip-container { position: relative; display: inline-block; margin: 1rem 0; }
@@ -50,6 +43,30 @@
     .faq-item.active .faq-question i { transform: rotate(180deg); }
     .connect-btn-container { text-align: center; margin-top: 1.5rem; }
     .connect-note { color: #555; margin-top: 0.8rem; font-size: 0.85rem; }
+
+    /* ===== NEW RULES STYLING ===== */
+    .rules-section { margin: 3rem 0; }
+    .rules-section h3 { color: #c084fc; font-size: 1.8rem; margin-bottom: 1rem; text-align: center; }
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .rules-card {
+      background: rgba(20, 20, 30, 0.7); border-radius: 25px; padding: 1.8rem 1.5rem;
+      border: 1px solid #2a1e30; transition: 0.3s ease; text-align: left;
+    }
+    .rules-card:hover { border-color: #c084fc; transform: translateY(-4px); }
+    .rules-card h4 { font-size: 1.3rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; color: #f0f0f0; }
+    .rules-card h4 i { color: #c084fc; }
+    .rules-card ul { list-style: none; color: #b0b8c7; font-size: 0.95rem; }
+    .rules-card ul li { padding: 0.4rem 0; border-bottom: 1px solid #2a1e30; display: flex; align-items: flex-start; gap: 0.6rem; }
+    .rules-card ul li:last-child { border-bottom: none; }
+    .rules-card ul li i { color: #c084fc; margin-top: 0.2rem; flex-shrink: 0; }
+    .rules-card.warning { border-color: #d32f2f; background: rgba(20, 0, 0, 0.5); }
+    .rules-card.warning h4 { color: #f44336; }
+    .rules-card.warning ul li i { color: #f44336; }
   </style>
 </head>
 <body>
@@ -99,13 +116,61 @@
         <div style="text-align: center; margin-top: 1rem;"><a href="https://discord.gg/pzXv2XDpx" target="_blank" class="btn">Open Discord</a></div>
       </div>
     </div>
-    <div class="faq-container">
-      <h3><i class="fas fa-question-circle"></i> FAQs</h3>
-      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">When does the server launch? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">The official launch date will be announced in our Discord server soon!</div></div>
-      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">What version? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">1.21.11, Java only.</div></div>
-      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">How do I get a rank? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Ranks are sold out right now. Check back later!</div></div>
-      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">Banned mods? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Hacked clients, X-ray, macros, ESP, freecam, and bridging mods are all banned.</div></div>
+
+    <!-- ===== SERVER RULES ===== -->
+    <div class="rules-section">
+      <h3><i class="fas fa-gavel"></i> Server Rules</h3>
+      <div class="rules-grid">
+        
+        <div class="rules-card">
+          <h4><i class="fas fa-ban"></i> Blacklisted Mods / Clients</h4>
+          <ul>
+            <li><i class="fas fa-times-circle"></i> No hacked clients</li>
+            <li><i class="fas fa-times-circle"></i> No movement mods</li>
+            <li><i class="fas fa-times-circle"></i> No ItemScroller / MouseTweaks</li>
+            <li><i class="fas fa-times-circle"></i> No radar / minimap / world map mods</li>
+            <li><i class="fas fa-times-circle"></i> No ESP (any type)</li>
+            <li><i class="fas fa-times-circle"></i> No freecam / replay mod / spectator-like mods</li>
+            <li><i class="fas fa-times-circle"></i> No accurate block placement mods</li>
+            <li><i class="fas fa-times-circle"></i> No macros, scripts, or auto clickers</li>
+            <li><i class="fas fa-times-circle"></i> No crystal optimizers (except Marlow / Hero)</li>
+            <li><i class="fas fa-times-circle"></i> No X-ray mods or resource packs</li>
+            <li><i class="fas fa-times-circle"></i> No bridging mods (Ex: bedrock bridging)</li>
+            <li><i class="fas fa-times-circle"></i> No Inventory Profile Next</li>
+            <li><i class="fas fa-times-circle"></i> No ProfileMacros</li>
+          </ul>
+        </div>
+
+        <div class="rules-card">
+          <h4><i class="fas fa-list"></i> General Rules</h4>
+          <ul>
+            <li><i class="fas fa-times-circle"></i> No IRL / cross trading</li>
+            <li><i class="fas fa-times-circle"></i> No cheating or unfair advantages</li>
+            <li><i class="fas fa-times-circle"></i> No bug or glitch abuse</li>
+            <li><i class="fas fa-times-circle"></i> No doxxing</li>
+            <li><i class="fas fa-times-circle"></i> No spam</li>
+            <li><i class="fas fa-times-circle"></i> No NSFW content</li>
+            <li><i class="fas fa-times-circle"></i> No abusive language</li>
+            <li><i class="fas fa-times-circle"></i> No advertising</li>
+            <li><i class="fas fa-times-circle"></i> No threats (including death threats)</li>
+            <li><i class="fas fa-times-circle"></i> No impersonating players or staff</li>
+            <li><i class="fas fa-times-circle"></i> No ban evading</li>
+          </ul>
+        </div>
+
+        <div class="rules-card warning">
+          <h4><i class="fas fa-exclamation-triangle"></i> Reminder</h4>
+          <ul>
+            <li><i class="fas fa-info-circle"></i> Use common sense</li>
+            <li><i class="fas fa-info-circle"></i> If it gives an advantage, it’s likely not allowed</li>
+            <li><i class="fas fa-info-circle"></i> If you think it's not allowed ask a Staff Member</li>
+            <li><i class="fas fa-info-circle"></i> Staff decisions are final</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
+
     <div class="connect-btn-container">
       <a href="#" class="btn" style="font-size: 1.3rem; padding: 0.8rem 3rem; pointer-events: none; opacity: 0.6;"><i class="fas fa-plug"></i> Connect Now</a>
       <div class="connect-note">The server is not yet open to the public. Stay tuned!</div>
@@ -122,7 +187,6 @@
   <script>
     function toggleFAQ(e) { e.classList.toggle('active'); }
     (function() {
-      // Pinging a placeholder host for demo purposes since the real IP isn't live yet
       const HOST = 'scarletsmp.playwithbao.com'; const PORT = 48316;
       const statusDot = document.getElementById('statusDot'); const statusText = document.getElementById('statusText'); const playerCountSpan = document.getElementById('playerCount');
       function updateStatus(online, players) {
