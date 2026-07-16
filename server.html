@@ -8,13 +8,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Override the background for this page to a rich purple gradient */
+    body {
+      background: linear-gradient(145deg, #0b0712 0%, #1a1225 50%, #0b0712 100%) !important;
+      background-attachment: fixed !important;
+    }
+    body::before, body::after { display: none; } /* Disable the glowing effects on this page */
+
     .server-card { background: rgba(20, 20, 30, 0.7); border-radius: 30px; padding: 3rem 2rem; margin: 2rem 0; border: 1px solid #2a1e30; text-align: center; transition: all 0.3s ease; }
     .server-card:hover { border-color: #c084fc; transform: scale(1.01); }
     .ip-container { position: relative; display: inline-block; margin: 1rem 0; }
-    .big-ip { font-size: 2.5rem; font-weight: 800; background: rgba(10, 0, 20, 0.8); padding: 0.6rem 2rem; border-radius: 60px; border: 2px solid #2a1e30; color: #f0f0f0; cursor: pointer; transition: 0.3s ease; display: inline-block; }
-    .big-ip:hover { border-color: #c084fc; transform: scale(1.02); box-shadow: 0 0 15px rgba(124, 58, 237, 0.2); }
-    .copy-badge { position: absolute; top: -10px; right: -10px; background: #4caf50; color: white; font-size: 0.8rem; font-weight: 700; padding: 0.2rem 0.8rem; border-radius: 40px; opacity: 0; transform: scale(0.8); transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); pointer-events: none; }
-    .copy-badge.show { opacity: 1; transform: scale(1); }
+    .big-ip { font-size: 2.5rem; font-weight: 800; background: rgba(10, 0, 20, 0.8); padding: 0.6rem 2rem; border-radius: 60px; border: 2px solid #2a1e30; color: #f0f0f0; cursor: default; display: inline-block; }
     .port-badge { background: #7c3aed; padding: 0.3rem 1.5rem; border-radius: 40px; font-weight: 700; display: inline-block; color: white; font-size: 1rem; margin-top: 0.5rem; }
     .check-list { margin: 1.5rem 0; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
     .check-list div { color: #b0b8c7; font-weight: 500; }
@@ -60,16 +64,15 @@
         <a href="leaderboards.html"><i class="fas fa-trophy"></i> Leaderboards</a>
         <a href="server.html" style="color:#c084fc; border-bottom-color:#c084fc;"><i class="fas fa-server"></i> Server</a>
       </div>
-      <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn"><i class="fas fa-play"></i> Join</a>
+      <a href="#" class="btn" style="pointer-events: none; opacity: 0.6;"><i class="fas fa-play"></i> Join</a>
     </nav>
   </div>
   <div class="container" style="padding: 2rem 0;">
     <h2 class="section-title"><span>🌐 Server Info</span></h2>
     <div class="server-card">
-      <div style="color: #9ba3b3; margin-bottom: 0.5rem;">Click the IP below to copy it.</div>
+      <div style="color: #9ba3b3; margin-bottom: 0.5rem;">Server IP is currently <strong>under wraps</strong> until launch day.</div>
       <div class="ip-container">
-        <div class="big-ip" id="serverIP">scarletsmp.playwithbao.com</div>
-        <div class="copy-badge" id="copyBadge">✓ Copied!</div>
+        <div class="big-ip">[ REDACTED ]</div>
       </div>
       <div class="port-badge">Java Edition</div>
       <div class="check-list"><div><i class="fas fa-check-circle"></i> Java Only</div><div><i class="fas fa-check-circle"></i> 1.21.11</div><div><i class="fas fa-check-circle"></i> 24/7 Uptime</div></div>
@@ -98,14 +101,14 @@
     </div>
     <div class="faq-container">
       <h3><i class="fas fa-question-circle"></i> FAQs</h3>
-      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">How do I join? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Hit "Play Now" or paste `scarletsmp.playwithbao.com` into your Java server list.</div></div>
+      <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">When does the server launch? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">The official launch date will be announced in our Discord server soon!</div></div>
       <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">What version? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">1.21.11, Java only.</div></div>
       <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">How do I get a rank? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Ranks are sold out right now. Check back later!</div></div>
       <div class="faq-item" onclick="toggleFAQ(this)"><div class="faq-question">Banned mods? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Hacked clients, X-ray, macros, ESP, freecam, and bridging mods are all banned.</div></div>
     </div>
     <div class="connect-btn-container">
-      <a href="minecraft://scarletsmp.playwithbao.com:48316" class="btn" style="font-size: 1.3rem; padding: 0.8rem 3rem;"><i class="fas fa-plug"></i> Connect Now</a>
-      <div class="connect-note">If Minecraft doesn't open, copy the IP above.</div>
+      <a href="#" class="btn" style="font-size: 1.3rem; padding: 0.8rem 3rem; pointer-events: none; opacity: 0.6;"><i class="fas fa-plug"></i> Connect Now</a>
+      <div class="connect-note">The server is not yet open to the public. Stay tuned!</div>
     </div>
   </div>
   <footer>
@@ -118,16 +121,8 @@
   </footer>
   <script>
     function toggleFAQ(e) { e.classList.toggle('active'); }
-    const ipElement = document.getElementById('serverIP');
-    const copyBadge = document.getElementById('copyBadge');
-    ipElement.addEventListener('click', function() {
-      const text = 'scarletsmp.playwithbao.com';
-      navigator.clipboard.writeText(text).then(() => {
-        copyBadge.classList.add('show');
-        setTimeout(() => { copyBadge.classList.remove('show'); }, 2000);
-      });
-    });
     (function() {
+      // Pinging a placeholder host for demo purposes since the real IP isn't live yet
       const HOST = 'scarletsmp.playwithbao.com'; const PORT = 48316;
       const statusDot = document.getElementById('statusDot'); const statusText = document.getElementById('statusText'); const playerCountSpan = document.getElementById('playerCount');
       function updateStatus(online, players) {
